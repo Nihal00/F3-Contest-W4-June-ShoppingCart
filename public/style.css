@@ -96,7 +96,9 @@ li {
 
 /* -------------Sign up page----------------- */
 .signup-section,
-.login-section {
+.login-section,
+.myProfile-section,
+.editPassword-section {
     display: flex;
     flex-direction: column;
     padding: 3rem;
@@ -110,7 +112,9 @@ li {
 }
 
 .signup-form,
-.login-form {
+.login-form,
+.myProfile-form,
+.editPassword-form {
     display: flex;
     flex-direction: column;
 }
@@ -131,4 +135,25 @@ li {
     color: var(--white-color);
     background-color: var(--black-color);
     border: none;
+}
+
+/* --------------profile page---------------- */
+.my-profile,
+.edit-pasword {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.save-info,
+.change-password,
+.logout {
+    width: 10.5rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+    color: var(--white-color);
+    background-color: var(--black-color);
+    border: none;
+    margin-bottom: 1rem;
 }
