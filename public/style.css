@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --black-color: #000;
+    --white-color: #fff;
+    --lite-black: #ffffff93;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    font-size: 62.5%;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+li{
+    list-style: none;
+}
+
+/* --------Header Section--------- */
+.header-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    background-color: var(--black-color);
+}
+
+.logo{
+    color: var(--white-color);
+    margin-left: 3rem;
+    font-size: 2rem;
+}
+
+.navbar{
+    width: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--lite-black);
+    font-size: 1.2rem;
+    margin-right: 2rem;
+}
+
+/* -----------Login UI of the website---------- */
+.first-page{
+    padding: 4rem;
+    display: flex;
+}
+
+.main-logo{
+    font-size: 5rem;
+    padding-block-end: 1.8rem;
+}
+
+.tag-line{
+    font-size: 1.8rem;
+    padding-block-end: 1.8rem;
+}
+
+.login{
+    font-size: 1rem;
+    padding: 0.5rem 2.8rem;
+    color: var(--white-color);
+    background-color: var(--black-color);
+    margin-right: 1rem;
+    text-align: center;
+}
+
+.signup{
+    font-size: 1rem;
+    padding: 0.5rem 2.8rem;
+    border: 2px solid var(--black-color);
+    text-align: center;
+}
+
+.right-container{
+    width: 40rem;
+}
+
+.home-img{
+    width: 100%;
+}
