@@ -85,9 +85,46 @@ li{
 }
 
 .right-container{
-    width: 40rem;
+    width: 50rem;
 }
 
 .home-img{
     width: 100%;
+}
+
+
+/* -------------Sign up page----------------- */
+.signup-section{
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+}
+
+.signup-logo{
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.signup-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-s{
+    height: 3rem;
+    margin-bottom: 1.8rem;
+    padding-left: 1rem;
+    border: 1.5px solid;
+    font-size: 1.1rem;
+}
+
+.signup-btn{
+    width: 8rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+    color: var(--white-color);
+    background-color: var(--black-color);
+    border: none;
 }
