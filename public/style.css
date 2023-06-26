@@ -157,3 +157,90 @@ li {
     border: none;
     margin-bottom: 1rem;
 }
+
+/* -----------Shopping items section----------------- */
+.items-section{
+    margin-left: 15rem;
+    padding: 1rem;
+}
+
+.search-section{
+    display: flex;
+    align-items: center;
+    padding:1rem;
+    border: 1px solid;
+    margin-bottom: 1rem;
+}
+
+.search-bar{
+    border: none;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+    color: var(--black-color);
+    width: 100%;
+}
+
+.search-bar:focus{
+    outline:none!important;
+}
+
+.search-selector{
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-selector{
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: 1px solid;
+    width: 11rem;
+    padding-block: 0.5rem;
+    text-align: center;
+}
+
+.active{
+    background-color: var(--black-color);
+    color: var(--white-color);
+}
+
+
+/* -------left side section----------- */
+.left-side{
+    position: fixed;
+    left: 0;
+    top: 5rem;
+    width: 15rem;
+    height: 100vh;
+    background-color: var(--black-color);
+    border-top: 1px solid var(--lite-black);
+}
+.color-container{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-color{
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 300;
+    padding-bottom: 0.5rem;
+}
+
+.colors{
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    padding-block: 0.5rem;
+}
+
+.colors > input {
+    margin-right: 0.5rem;
+}
+
+.colors input[type="checkbox"]{
+    accent-color: var(--black-color);
+}   
+.colors > label {
+    font-size: 0.8rem;
+}
