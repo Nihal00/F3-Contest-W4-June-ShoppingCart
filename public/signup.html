@@ -14,8 +14,8 @@
         <li><a href="../index.html">Home</a></li>
         <li><a href="../public/login.html">Login</a></li>
         <li><a href="#">Signup</a></li>
-        <li><a href="../src/cart.html">My Cart</a></li>
-        <li><a href="../src/profile.html">Profile</a></li>
+        <li><a>My Cart</a></li>
+        <li><a>Profile</a></li>
       </nav>
     </header>
 
@@ -25,37 +25,44 @@
         <input
           type="text"
           class="fname input-s"
+          id="fname"
           required
           placeholder="First Name"
         />
         <input
           type="text"
           class="lname input-s"
+          id="lname"
           required
           placeholder="Last Name"
         />
         <input
           type="email"
           class="email input-s"
+          id="email"
           required
           placeholder="Email"
         />
         <input
           type="password"
           class="password input-s"
+          id="password"
           required
           placeholder="Password"
         />
         <input
           type="text"
           class="confirm-password input-s"
+          id="cnfpassword"
           required
           placeholder="Confirm Password"
         />
-        <button class="signup-btn" type="submit" class="signup-btn">
+        <button class="signup-btn" type="submit" id="signup-btn">
           Signup
         </button>
       </form>
     </section>
+
+    <script src="./signup.js"></script>
   </body>
 </html>

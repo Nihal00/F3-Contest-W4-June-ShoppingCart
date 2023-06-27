@@ -54,6 +54,10 @@ li {
     margin-right: 2rem;
 }
 
+.navbar > li{
+    cursor: pointer;
+}
+
 /* -----------Login UI of the website---------- */
 .first-page {
     padding: 4rem;
@@ -127,7 +131,7 @@ li {
     font-size: 1.1rem;
 }
 
-.signup-btn {
+.signup-btn, .login-btn {
     width: 8rem;
     font-size: 1rem;
     padding: 0.5rem;
