@@ -3,6 +3,12 @@ const fName = document.querySelector(".fname");
 const lName = document.querySelector(".lname");
 const saveInfo = document.querySelector(".save-info");
 
+const oldPassword = document.getElementById("old-password");
+const newPassword = document.getElementById("new-password");
+const cnfPassword = document.getElementById("cnf-password");
+const changePassword = document.querySelector(".change-password");
+const logout = document.querySelector(".logout");
+
 async function LoggedInUserEmail() {
   let userEmail = JSON.parse(sessionStorage.getItem("LogginUserId"));
   return userEmail;
@@ -35,6 +41,14 @@ async function goToShoppingPage() {
   }, 1000);
 }
 
+async function logginOut(){
+  sessionStorage.clear();
+  setTimeout(() => {
+    window.location.href = '../index.html';
+  })
+}
+
+
 saveInfo.addEventListener("click", async (e) => {
   e.preventDefault();
 
@@ -56,11 +70,7 @@ saveInfo.addEventListener("click", async (e) => {
   await addUpdatedUserDetails(userData, userEmail);
 });
 
-const oldPassword = document.getElementById("old-password");
-const newPassword = document.getElementById("new-password");
-const cnfPassword = document.getElementById("cnf-password");
-const changePassword = document.querySelector(".change-password");
-const logout = document.querySelector(".logout");
+
 
 changePassword.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -86,4 +96,8 @@ changePassword.addEventListener("click", async (e) => {
   await addUpdatedUserDetails(userData);
 
   await goToShoppingPage();
+});
+
+logout.addEventListener('click', async() => {
+  await logginOut();
 });
