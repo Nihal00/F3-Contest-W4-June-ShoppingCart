@@ -1,72 +1,89 @@
 //DOM Element
-const fName = document.querySelector('.fname');
-const lName = document.querySelector('.lname');
-const saveInfo = document.querySelector('.save-info');
+const fName = document.querySelector(".fname");
+const lName = document.querySelector(".lname");
+const saveInfo = document.querySelector(".save-info");
 
+async function LoggedInUserEmail() {
+  let userEmail = JSON.parse(sessionStorage.getItem("LogginUserId"));
+  return userEmail;
+}
 
+async function LoggedInUserDetails(userEmail) {
+  let userDataBase = JSON.parse(localStorage.getItem("userData"));
 
+  let userInfo = userDataBase.find((user) => user.emailId === userEmail);
 
-let userData = JSON.parse(localStorage.getItem("userData"));
-let loggedEmailId = JSON.parse(sessionStorage.getItem("LogginUserId"));
+  return userInfo;
+}
 
-let userDetails = userData.find(data => data.emailId === loggedEmailId);
+async function addUpdatedUserDetails(userData) {
+  let userDataBase = JSON.parse(localStorage.getItem("userData"));
 
-console.log(userDetails)
+  let updatedUserDetails = userDataBase.filter(
+    (data) => data.emailId !== userData.emailId
+  );
 
-saveInfo.addEventListener('click', (e) => {
-    e.preventDefault();
+  localStorage.setItem(
+    "userData",
+    JSON.stringify([...updatedUserDetails, userData])
+  );
+}
 
-    if(fName.value.trim() !== ""){
-        userDetails.firstName = fName.value.trim();  
-    }
+async function goToShoppingPage() {
+  setTimeout(() => {
+    window.location.href = "./shop.html";
+  }, 1000);
+}
 
-    if(lName.value.trim() !== ""){
-        userDetails.lastName = lName.value.trim();
-    }
-    
-    fName.value = '';
-    lName.value = '';
+saveInfo.addEventListener("click", async (e) => {
+  e.preventDefault();
 
-    let newlocalStoreage = userData.filter(data => data.loggedEmailId !== loggedEmailId);
-    newlocalStoreage.push(userDetails);
-    let newLocalData = JSON.stringify(newlocalStoreage);
-    localStorage.setItem("userData", newLocalData);
-})
+  let userEmail = await LoggedInUserEmail();
+  let userData = await LoggedInUserDetails(userEmail);
+  console.log(userData);
 
+  if (fName.value.trim() !== "") {
+    userData.firstName = fName.value.trim();
+  }
 
-const oldPassword = document.getElementById('old-password');
-const newPassword = document.getElementById('new-password');
-const cnfPassword = document.getElementById('cnf-password');
-const changePassword = document.querySelector('.change-password');
-const logout = document.querySelector('.logout');
+  if (lName.value.trim() !== "") {
+    userData.lastName = lName.value.trim();
+  }
 
+  fName.value = "";
+  lName.value = "";
 
-changePassword.addEventListener('click', (e) => {
-    e.preventDefault();
+  await addUpdatedUserDetails(userData, userEmail);
+});
 
-    if(userDetails.password !== oldPassword.value){
-        alert("Old password is incorrect");
-        return;
-    }
+const oldPassword = document.getElementById("old-password");
+const newPassword = document.getElementById("new-password");
+const cnfPassword = document.getElementById("cnf-password");
+const changePassword = document.querySelector(".change-password");
+const logout = document.querySelector(".logout");
 
-    if(newPassword.value !== cnfPassword.value){
-        alert('Password not matching');
-        return;
-    }
+changePassword.addEventListener("click", async (e) => {
+  e.preventDefault();
 
-    userDetails.password = newPassword.value;
-    oldPassword.value = '';
-    newPassword.value = '' ;
-    cnfPassword.value ='';
+  let userEmail = await LoggedInUserEmail();
+  let userData = await LoggedInUserDetails(userEmail);
 
-    let newlocalStoreage = userData.filter(data => data.loggedEmailId !== loggedEmailId);
-    newlocalStoreage.push(userDetails);
-    let newLocalData = JSON.stringify(newlocalStoreage);
-    localStorage.setItem("userData", newLocalData);
+  if (userData.password !== oldPassword.value) {
+    alert("Old password is incorrect");
+    return;
+  }
 
+  if (newPassword.value !== cnfPassword.value) {
+    alert("Password not matching");
+    return;
+  }
 
-    setTimeout(() => {
-        window.location.href='./shop.html';
-    }, 1000);
-   
-})
+  userData.password = newPassword.value;
+  oldPassword.value = "";
+  newPassword.value = "";
+  cnfPassword.value = "";
+
+  await addUpdatedUserDetails(userData);
+
+  await goToShoppingPage();
+});
