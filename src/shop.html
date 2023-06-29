@@ -8,6 +8,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../public/style.css" />
     <title>Shop in MeShop</title>
   </head>
@@ -102,7 +106,7 @@
       <section class="items-section">
         <div class="search-section">
           <span class="material-symbols-outlined"> search </span>
-          <input type="text" class="search-bar" placeholder="Search" />
+          <input type="text" class="search-bar" id="search-bar" placeholder="Search" />
         </div>
         <div class="search-selector">
           <button class="item-selector active" value="all">All</button>
@@ -112,7 +116,7 @@
           <button class="item-selector" value="electronics">Electroincs</button>
         </div>
         <div class="display-product" id="display-product">
-          <!-- <div class="item-container">
+          <div class="item-container">
             <div class="inner-item-container">
               <div class="img-container">
                 <img
@@ -134,30 +138,34 @@
                 <div class="items-colors">
                   Colors :
                   <span class="circle">
-                    <span class="material-symbols-outlined circles"> circle </span>
-                    <span class="material-symbols-outlined circles"> circle </span>
-                    <span class="material-symbols-outlined circles"> circle </span>
+                    <span class="material-icons-outlined"> lens </span>
+                    <span class="material-symbols-outlined circles">
+                      circle
+                    </span>
+                    <span class="material-symbols-outlined circles">
+                      circle
+                    </span>
                   </span>
                 </div>
                 <div class="items-rating">
                   Rating :
                   <span class="star">
-                    <span class="material-symbols-outlined"> grade </span>
-                    <span class="material-symbols-outlined"> grade </span>
-                    <span class="material-symbols-outlined"> grade </span>
-                    <span class="material-symbols-outlined"> grade </span>
-                    <span class="material-symbols-outlined"> grade </span>
+                    <span class="material-icons">star</span>
+                    <span class="material-symbols-outlined stars"> grade </span>
+                    <span class="material-symbols-outlined stars"> grade </span>
+                    <span class="material-symbols-outlined stars"> grade </span>
+                    <span class="material-symbols-outlined stars"> grade </span>
                   </span>
                 </div>
                 <div class="item-description">
                   Your perfect pack for everyday use and walks in the forest.
                   Stash your laptop (up to 15 inches) in the padded sleeve, your
                   everyday
-                </div> 
+                </div>
               </div>
             </div>
-            <button id="add-to-cart" type="submit">Add to Cart</button>
-          </div> -->
+            <button class="add-to-cart" type="submit">Add to Cart</button>
+          </div>
         </div>
       </section>
 
