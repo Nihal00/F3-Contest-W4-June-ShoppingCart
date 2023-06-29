@@ -22,7 +22,7 @@
         <li><a href="../src/profile.html">Profile</a></li>
       </nav>
     </header>
-    
+
     <main class="main-section">
       <aside class="left-side">
         <div class="color-container">
@@ -48,7 +48,7 @@
             <label for="white">White</label>
           </div>
         </div>
-  
+
         <div class="sizes-container">
           <h3 class="side-sizes">Sizes</h3>
           <div class="sizes">
@@ -68,14 +68,14 @@
             <label for="xl">XL</label>
           </div>
         </div>
-  
+
         <div class="rating-container">
           <h3 class="side-rating">Rating</h3>
           <div class="rating">
             <input type="range" min="0" max="5" id="range" />
           </div>
         </div>
-  
+
         <div class="price-container">
           <h3 class="side-price">Price Range</h3>
           <div class="price">
@@ -105,228 +105,59 @@
           <input type="text" class="search-bar" placeholder="Search" />
         </div>
         <div class="search-selector">
-          <div class="item-selector active" id="all">All</div>
-          <div class="item-selector" id="mens">Mens</div>
-          <div class="item-selector" id="womens">Womens</div>
-          <div class="item-selector" id="jewellery">Jewellery</div>
-          <div class="item-selector" id="electroincs">Electronics</div>
+          <button class="item-selector active" value="all">All</button>
+          <button class="item-selector" value="men's">Mens</button>
+          <button class="item-selector" value="women's">Womens</button>
+          <button class="item-selector" value="jewelery">Jewellery</button>
+          <button class="item-selector" value="electronics">Electroincs</button>
         </div>
-        <div class="display-product">
-          <div class="item-container">
+        <div class="display-product" id="display-product">
+          <!-- <div class="item-container">
             <div class="inner-item-container">
-              <img
-                class="item-img"
-                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                alt=""
-              />
+              <div class="img-container">
+                <img
+                  class="item-img"
+                  src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+                  alt=""
+                />
+              </div>
               <div class="item-details">
+                <div class="item-title">
+                  <h3 class="title">
+                    Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+                  </h3>
+                </div>
                 <div class="price-size">
                   <p class="item-price">$100</p>
                   <p class="item-size">S,M,L</p>
                 </div>
-                <div class="items-colors">Colors :</div>
-                <div class="items-rating">Rating :</div>
+                <div class="items-colors">
+                  Colors :
+                  <span class="circle">
+                    <span class="material-symbols-outlined circles"> circle </span>
+                    <span class="material-symbols-outlined circles"> circle </span>
+                    <span class="material-symbols-outlined circles"> circle </span>
+                  </span>
+                </div>
+                <div class="items-rating">
+                  Rating :
+                  <span class="star">
+                    <span class="material-symbols-outlined"> grade </span>
+                    <span class="material-symbols-outlined"> grade </span>
+                    <span class="material-symbols-outlined"> grade </span>
+                    <span class="material-symbols-outlined"> grade </span>
+                    <span class="material-symbols-outlined"> grade </span>
+                  </span>
+                </div>
                 <div class="item-description">
                   Your perfect pack for everyday use and walks in the forest.
                   Stash your laptop (up to 15 inches) in the padded sleeve, your
-                  everyday 
-                </div>
+                  everyday
+                </div> 
               </div>
             </div>
             <button id="add-to-cart" type="submit">Add to Cart</button>
-          </div>
-
-          <div class="item-container">
-            <div class="inner-item-container">
-              <img
-                class="item-img"
-                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                alt=""
-              />
-              <div class="item-details">
-                <div class="price-size">
-                  <p class="item-price">$100</p>
-                  <p class="item-size">S,M,L</p>
-                </div>
-                <div class="items-colors">Colors :</div>
-                <div class="items-rating">Rating :</div>
-                <div class="item-description">
-                  Your perfect pack for everyday use and walks in the forest.
-                  Stash your laptop (up to 15 inches) in the padded sleeve, your
-                  everyday 
-                </div>
-              </div>
-            </div>
-            <button id="add-to-cart" type="submit">Add to Cart</button>
-          </div>
-
-          <div class="item-container">
-            <div class="inner-item-container">
-              <img
-                class="item-img"
-                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                alt=""
-              />
-              <div class="item-details">
-                <div class="price-size">
-                  <p class="item-price">$100</p>
-                  <p class="item-size">S,M,L</p>
-                </div>
-                <div class="items-colors">Colors :</div>
-                <div class="items-rating">Rating :</div>
-                <div class="item-description">
-                  Your perfect pack for everyday use and walks in the forest.
-                  Stash your laptop (up to 15 inches) in the padded sleeve, your
-                  everyday 
-                </div>
-              </div>
-            </div>
-            <button id="add-to-cart" type="submit">Add to Cart</button>
-          </div>
-
-          <div class="item-container">
-            <div class="inner-item-container">
-              <img
-                class="item-img"
-                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                alt=""
-              />
-              <div class="item-details">
-                <div class="price-size">
-                  <p class="item-price">$100</p>
-                  <p class="item-size">S,M,L</p>
-                </div>
-                <div class="items-colors">Colors :</div>
-                <div class="items-rating">Rating :</div>
-                <div class="item-description">
-                  Your perfect pack for everyday use and walks in the forest.
-                  Stash your laptop (up to 15 inches) in the padded sleeve, your
-                  everyday 
-                </div>
-              </div>
-            </div>
-            <button id="add-to-cart" type="submit">Add to Cart</button>
-          </div>
-
-          <div class="item-container">
-            <div class="inner-item-container">
-              <img
-                class="item-img"
-                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                alt=""
-              />
-              <div class="item-details">
-                <div class="price-size">
-                  <p class="item-price">$100</p>
-                  <p class="item-size">S,M,L</p>
-                </div>
-                <div class="items-colors">Colors :</div>
-                <div class="items-rating">Rating :</div>
-                <div class="item-description">
-                  Your perfect pack for everyday use and walks in the forest.
-                  Stash your laptop (up to 15 inches) in the padded sleeve, your
-                  everyday 
-                </div>
-              </div>
-            </div>
-            <button id="add-to-cart" type="submit">Add to Cart</button>
-          </div>
-
-          <div class="item-container">
-            <div class="inner-item-container">
-              <img
-                class="item-img"
-                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                alt=""
-              />
-              <div class="item-details">
-                <div class="price-size">
-                  <p class="item-price">$100</p>
-                  <p class="item-size">S,M,L</p>
-                </div>
-                <div class="items-colors">Colors :</div>
-                <div class="items-rating">Rating :</div>
-                <div class="item-description">
-                  Your perfect pack for everyday use and walks in the forest.
-                  Stash your laptop (up to 15 inches) in the padded sleeve, your
-                  everyday 
-                </div>
-              </div>
-            </div>
-            <button id="add-to-cart" type="submit">Add to Cart</button>
-          </div>
-
-          <div class="item-container">
-            <div class="inner-item-container">
-              <img
-                class="item-img"
-                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                alt=""
-              />
-              <div class="item-details">
-                <div class="price-size">
-                  <p class="item-price">$100</p>
-                  <p class="item-size">S,M,L</p>
-                </div>
-                <div class="items-colors">Colors :</div>
-                <div class="items-rating">Rating :</div>
-                <div class="item-description">
-                  Your perfect pack for everyday use and walks in the forest.
-                  Stash your laptop (up to 15 inches) in the padded sleeve, your
-                  everyday 
-                </div>
-              </div>
-            </div>
-            <button id="add-to-cart" type="submit">Add to Cart</button>
-          </div>
-
-          <div class="item-container">
-            <div class="inner-item-container">
-              <img
-                class="item-img"
-                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                alt=""
-              />
-              <div class="item-details">
-                <div class="price-size">
-                  <p class="item-price">$100</p>
-                  <p class="item-size">S,M,L</p>
-                </div>
-                <div class="items-colors">Colors :</div>
-                <div class="items-rating">Rating :</div>
-                <div class="item-description">
-                  Your perfect pack for everyday use and walks in the forest.
-                  Stash your laptop (up to 15 inches) in the padded sleeve, your
-                  everyday 
-                </div>
-              </div>
-            </div>
-            <button id="add-to-cart" type="submit">Add to Cart</button>
-          </div>
-
-          <div class="item-container">
-            <div class="inner-item-container">
-              <img
-                class="item-img"
-                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                alt=""
-              />
-              <div class="item-details">
-                <div class="price-size">
-                  <p class="item-price">$100</p>
-                  <p class="item-size">S,M,L</p>
-                </div>
-                <div class="items-colors">Colors :</div>
-                <div class="items-rating">Rating :</div>
-                <div class="item-description">
-                  Your perfect pack for everyday use and walks in the forest.
-                  Stash your laptop (up to 15 inches) in the padded sleeve, your
-                  everyday 
-                </div>
-              </div>
-            </div>
-            <button id="add-to-cart" type="submit">Add to Cart</button>
-          </div>
+          </div> -->
         </div>
       </section>
 

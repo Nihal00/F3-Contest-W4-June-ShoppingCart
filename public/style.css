@@ -29,14 +29,28 @@ li {
     list-style: none;
 }
 
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+
+
 /* --------Header Section--------- */
 .header-section {
+    position: fixed;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     height: 5rem;
+    width: 100vw;
     background-color: var(--black-color);
+    z-index: 999;
 }
 
 .logo {
@@ -168,18 +182,17 @@ li {
 .main-section {
     /* display: flex; */
     position: relative;
-    
 }
 
 /* items section  */
 .items-section {
     position: absolute;
     margin-left: 15rem;
+    margin-top: 4rem;
     padding: 3rem;
     width: 80%;
     top: 0;
     left: 0;
-
 }
 
 .search-section {
@@ -224,16 +237,20 @@ li {
 
 /* -------left side section----------- */
 .left-side {
-    position: sticky;
+    position: fixed;
     left: 0;
-    top: 0;
+    top: 5rem;
     width: 15rem;
-    /* height: 100vh; */
+    height: 100vh;
+    /* overflow-y: hidden; */
     padding-bottom: 1rem;
     background-color: var(--black-color);
     border-top: 1px solid var(--lite-black);
     /* display: none; */
+    z-index: 999;
 }
+
+
 .color-container,
 .sizes-container,
 .rating-container,
@@ -242,6 +259,7 @@ li {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid var(--lite-black);
+    cursor: pointer;
 }
 
 .side-color,
@@ -251,6 +269,7 @@ li {
     font-size: 1.1rem;
     color: var(--white-color);
     font-weight: 500;
+    cursor: pointer;
     /* padding-bottom: 0.1rem; */
 }
 
@@ -261,13 +280,15 @@ li {
     color: var(--white-color);
     display: flex;
     align-items: center;
-    padding-block: 0.5rem;
+    padding-block: 0.3rem;
+    cursor: pointer;
 }
 
 .colors > input,
 .sizes > input,
 .price > input {
     margin-right: 0.9rem;
+    cursor: pointer;
 }
 
 .colors input[type="checkbox"] {
@@ -276,7 +297,8 @@ li {
 .colors > label,
 .sizes > label,
 .price > label {
-    font-size: .8rem;
+    font-size: 0.8rem;
+    cursor: pointer;
 }
 
 .price-container {
@@ -297,6 +319,12 @@ li {
     background-color: var(--black-color);
     color: var(--white-color);
     font-size: 1rem;
+    cursor: pointer;
+}
+
+#filter:hover{
+    background-color: var(--lite-black);
+    color: var(--black-color);
 }
 
 /* range  */
@@ -334,16 +362,15 @@ li {
     cursor: pointer;
 }
 
-
-
 /* display product  */
 .display-product {
     /* border: 1px solid ; */
-    display: grid; 
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    padding-block: 5rem;
-    row-gap: 6rem;  
+    padding-block: 2rem;
+    row-gap: 5rem;
+    /* column-gap: 1rem;   */
 }
 
 .item-container {
@@ -354,6 +381,7 @@ li {
     flex-direction: column;
     align-items: center;
     padding-top: 0.2rem;
+    cursor: pointer;
 }
 
 .inner-item-container {
@@ -363,15 +391,39 @@ li {
     align-items: center;
     flex-direction: column;
 }
-
+.img-container {
+    display: flex;
+    /* border: 1px solid green; */
+    height: 18rem;
+    align-items: center;
+    justify-content: center;
+}
 .item-img {
-    width: 80%;
+    width: 60%;
+    height: fit-content;
 }
 
 .item-details {
     display: flex;
     flex-direction: column;
+    /* border: 1px solid red; */
+    width: 100%;
 }
+
+.item-title {
+    /* border: 1px solid; */
+    font-size: 0.8rem;
+    text-align: center;
+    /* align-items: center; */
+    justify-self: center;
+    margin-bottom: 0.5rem;
+    height: 3rem;
+    /* display: none; */
+}
+
+/* .title{
+    top: ce;
+} */
 
 .price-size,
 .items-colors,
@@ -383,6 +435,11 @@ li {
     /* border: 1px solid; */
     align-items: center;
 }
+
+.items-rating, .items-colors{
+    justify-content: start;
+}
+
 .item-price,
 .item-size,
 .items-colors,
@@ -391,19 +448,30 @@ li {
     font-weight: 600;
 }
 
+.circle {
+    padding-left: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.circle > .material-symbols-outlined{
+   font-size: 18px;
+}
+
 .item-description {
     width: 100%;
     font-size: 0.7rem;
     height: 3.5rem;
     font-weight: 500;
     /* border: 1px solid; */
-    overflow: scroll;
+    overflow: auto;
 }
 
 #add-to-cart {
     width: 100%;
     height: 2.5rem;
     border: none;
+    margin-top: 0.8rem;
     color: var(--white-color);
     font-size: 1.2rem;
     background-color: var(--black-color);
