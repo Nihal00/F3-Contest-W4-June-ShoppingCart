@@ -5,8 +5,10 @@ const itemSelector = document.querySelector(".search-selector");
 const itemSelectorList = document.querySelectorAll(
   ".search-selector .item-selector"
 );
+const ratingBar = document.getElementById('range');
 
 let productData = [];
+let cartProductData = [];
 
 async function getProductDetails() {
   try {
@@ -90,7 +92,19 @@ async function displayProducts() {
     itemContainer.appendChild(btn);
 
     productDisplay.append(itemContainer)
+
+    btn.addEventListener('click', async(e) => {
+      console.log(product);
+      await setCart(product)
+    })
   });
+}
+
+async function setCart(product){
+  let sessionStore = JSON.parse(sessionStorage.getItem("cart")) || [];
+  sessionStore.push(product);
+  let json = JSON.stringify(sessionStore);
+  sessionStorage.setItem("cart", json);
 }
 
 function colorFill() {
@@ -175,6 +189,11 @@ async function displaySortedProduct(list) {
     itemContainer.appendChild(btn);
 
     productDisplay.append(itemContainer)
+   
+    btn.addEventListener('click', async(e) => {
+      console.log(product);
+      await setCart(product)
+    })
   });
 }
 
@@ -229,14 +248,41 @@ async function sortedProduct(typeOfProduct) {
 }
 
 
+function searchInput(inputs){
+  const filterArr = [];
+  for (const data of productData) {
+    let lowerCase = data.title.toLowerCase();
+    if (lowerCase.includes(inputs.toLowerCase())) {
+      filterArr.push(data);
+    }
+  }
+  return filterArr;
+}
+
+function ratingInput(rate){
+  const ratingArr = [];
+  for (const data of productData) {
+    let num = Math.round(data.rating.rate)
+    if(num === parseInt(rate)){
+      ratingArr.push(data);
+    }
+  }
+  return ratingArr;
+}
+
+
+searchBar.addEventListener('input', async (e) => {
+    let searchResult = searchInput(e.target.value);
+    await displaySortedProduct(searchResult);
+})
+
 itemSelectorList.forEach((selector) => {
   selector.addEventListener("click", async (e) => {
     itemSelector.querySelector(".active").classList.remove("active");
     e.target.classList.add("active");
     // console.log(e.target.value);
     if (e.target.value === "all") {
-      let productData = await getProductDetails();
-      await displayProducts(productData);
+      await displayProducts();
     } else {
       let selectedListItems = await sortedProduct(e.target.value);
       await displaySortedProduct(selectedListItems);
@@ -244,24 +290,17 @@ itemSelectorList.forEach((selector) => {
   });
 });
 
-function searchInput(inputs){
-  const filterArr = [];
-  for (const data of productData) {
-    if (data.title.includes(inputs)) {
-      filterArr.push(data);
-    }
-  }
-  return filterArr;
-}
 
-
-
-searchBar.addEventListener('input', async (e) => {
-    console.log(e.target.value);
-    let searchResult = searchInput(e.target.value);
-    await displaySortedProduct(searchResult);
+ratingBar.addEventListener('change', async(e) => {
+  let rate = ratingInput(e.target.value);
+  await displaySortedProduct(rate);
 })
 
+const redValue = document.getElementById('red');
+
+redValue.addEventListener('change', (e) => {
+  // console.log(redValue.checked);
+})
 
 window.addEventListener("load", async () => {
   productData = await getProductDetails();
