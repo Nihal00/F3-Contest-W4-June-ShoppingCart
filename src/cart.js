@@ -97,14 +97,16 @@ async function displayCart(cartProduct) {
 
 
 
+
 window.addEventListener("load", async () => {
-  cartProduct = await getCartDetails();
+  cartProduct = await getCartDetails() || [];
   console.log(cartProduct);
+
   if(cartProduct.length === 0){
-    billingSection.setAttribute('class', 'hidden');
+    billingSection.classList.add('hidden');
     cartEmpty.removeAttribute('hidden');
   } else {
-    cartEmpty.setAttribute('class', 'hidden');
+    cartEmpty.classList.add('hidden');
     billingSection.removeAttribute('hidden');
   }
   await displayCart(cartProduct);
