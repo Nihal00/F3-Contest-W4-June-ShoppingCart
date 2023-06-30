@@ -4,6 +4,7 @@ const bills = document.querySelector(".bills");
 const total = document.querySelector(".total");
 const billingSection = document.querySelector(".billing-section");
 const cartEmpty = document.querySelector('.cart-empty');
+const checkout = document.getElementById('checkout');
 
 
 async function getCartDetails() {
@@ -68,7 +69,7 @@ async function displayCart(cartProduct) {
                     <p class="fullTitle">${product.title}</p>
                 </div>
                 <div class="price-size">
-                <p class="item-price">Price : ${product.price}
+                <p class="item-price">Price : $${product.price}
                 </div>
 
             </div>
@@ -96,6 +97,89 @@ async function displayCart(cartProduct) {
 }
 
 
+
+
+//-----------------Razor Pay ------------------------------
+
+const razorPay = document.getElementById('checkout');
+var options = {
+  "key": "", // Enter the Key ID generated from the Dashboard
+  "amount": "1000",
+  "currency": "INR",
+  "description": "Acme Corp",
+  "image": "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg",
+  "prefill":
+  {
+    "email": "gaurav.kumar@example.com",
+    "contact": +919900000000,
+  },
+  config: {
+    display: {
+      blocks: {
+        utib: { //name for Axis block
+          name: "Pay using Axis Bank",
+          instruments: [
+            {
+              method: "card",
+              issuers: ["UTIB"]
+            },
+            {
+              method: "netbanking",
+              banks: ["UTIB"]
+            },
+          ]
+        },
+        other: { //  name for other block
+          name: "Other Payment modes",
+          instruments: [
+            {
+              method: "card",
+              issuers: ["ICIC"]
+            },
+            {
+              method: 'netbanking',
+            }
+          ]
+        }
+      },
+      hide: [
+        {
+        method: "upi"
+        }
+      ],
+      sequence: ["block.utib", "block.other"],
+      preferences: {
+        show_default_blocks: false // Should Checkout show its default blocks?
+      }
+    }
+  },
+  "handler": function (response) {
+    alert(response.razorpay_payment_id);
+  },
+  "modal": {
+    "ondismiss": function () {
+      if (confirm("Are you sure, you want to close the form?")) {
+        txt = "You pressed OK!";
+        console.log("Checkout form closed by the user");
+      } else {
+        txt = "You pressed Cancel!";
+        console.log("Complete the Payment")
+      }
+    }
+  }
+};
+
+var rzp1 = new Razorpay(options);
+
+razorPay.addEventListener('click', (e) => {
+  rzp1.open();
+    e.preventDefault();
+
+  sessionStorage.removeItem('cart');
+  reloder.reload();
+  
+
+})
 
 
 window.addEventListener("load", async () => {
