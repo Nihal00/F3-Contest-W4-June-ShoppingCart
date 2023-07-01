@@ -93,7 +93,7 @@ li {
     cursor: pointer;
 }
 
-.navbar > li:hover{
+.navbar > li:hover {
     color: var(--white-color);
 }
 
@@ -319,8 +319,6 @@ li {
     cursor: pointer;
 }
 
-
-
 .colors input[type="checkbox"],
 .sizes input[type="checkbox"],
 .price input[type="checkbox"] {
@@ -335,7 +333,7 @@ li {
 }
 
 .price-container {
-    border-bottom: none;
+    border-bottom: none
     /* margin-bottom: 7rem; */
 }
 
@@ -353,6 +351,7 @@ li {
     color: var(--white-color);
     font-size: 1rem;
     cursor: pointer;
+    margin-top: 1rem;
 }
 
 #filter:hover {
@@ -649,7 +648,8 @@ li {
         rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.cart-empty h1, .razorpay h1 {
+.cart-empty h1,
+.razorpay h1 {
     font-size: 3rem;
     padding: 2rem;
 }
@@ -663,10 +663,9 @@ li {
     color: var(--white-color);
 }
 
-
 /* -------------Razorpay Gateway--------------- */
 
-.payment{
+.payment {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -677,12 +676,12 @@ li {
     justify-content: center;
 }
 
-.razorpay{
+.razorpay {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    margin-block: 1rem;    
+    margin-block: 1rem;
     background-color: rgb(101, 177, 221);
     border-radius: 3rem;
     cursor: pointer;
@@ -691,7 +690,7 @@ li {
     color: var(--white-color);
 }
 
-.pay-btn{
+.pay-btn {
     width: fit-content;
     border: none;
     font-size: 1.2rem;
@@ -699,9 +698,70 @@ li {
     border-radius: 0.7rem;
 }
 
-.razorpay:hover > .pay-btn{
+.razorpay:hover > .pay-btn {
     background-color: rgb(104, 230, 104);
     color: var(--white-color);
     font-weight: bold;
 }
 
+
+
+
+
+@media screen and (max-height: 612px) {
+    .color-container,
+.sizes-container,
+.rating-container,
+.price-container {
+    padding: 0.4rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--lite-black);
+    cursor: pointer;
+}
+
+.side-color,
+.side-sizes,
+.side-rating,
+.side-price {
+    font-size: 1.1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    cursor: pointer;
+    /* padding-bottom: 0.1rem; */
+}
+
+.colors,
+.sizes,
+.rating,
+.price {
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    padding-block: 0.3rem;
+    cursor: pointer;
+}
+
+.colors > label,
+.sizes > label,
+.price > label {
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+.price-container {
+    border-bottom: none
+    /* margin-bottom: 7rem; */
+}
+
+#filter {
+    width: 10rem;
+    padding: 0.8rem 1.6rem ;
+    border: 1px solid var(--lite-black);
+    background-color: var(--black-color);
+    color: var(--white-color);
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 0.8rem;
+}
+}

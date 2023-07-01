@@ -1,12 +1,15 @@
 let productAmt = itemsDetils();
 let UserEmail = userEmail();
 
+
+//-=-----------check if User is Login or not-----------
 if (
   sessionStorage.getItem("LogginUserId") === null &&
   sessionStorage.getItem("MeShopToken") === null
 ) {
   window.location.href = "../index.html";
 }
+
 
 function itemsDetils() {
   let cartProduct = JSON.parse(sessionStorage.getItem("cart"));
@@ -26,6 +29,8 @@ function userEmail() {
   return userId;
 }
 
+
+////-----------------------------Make the paymenet-------------------------
 let key = "rzp_test_PV1oQ0oMtgXOsq";
 
 var options = {

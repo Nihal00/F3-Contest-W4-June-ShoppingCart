@@ -6,6 +6,7 @@ const myCart = document.getElementById("my-cart");
 const profile = document.getElementById("profile");
 const homePage = document.getElementById("home");
 
+//------------------Check if user is login or not----------------------------
 if (
   sessionStorage.getItem("LogginUserId") &&
   sessionStorage.getItem("MeShopToken")
@@ -15,6 +16,7 @@ if (
   homePage.setAttribute("href", "../src/shop.html");
 }
 
+//-----------------------Generate 16 key unique id ---------------------------
 function uniqueNum() {
   let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let unique = "";
@@ -25,6 +27,7 @@ function uniqueNum() {
   return unique;
 }
 
+//---------------------Get User data to verify--------------------------
 async function getLocalStorageData() {
   try {
     let userData = JSON.parse(localStorage.getItem("userData"));
@@ -34,6 +37,7 @@ async function getLocalStorageData() {
   }
 }
 
+//------------------Find User ID before login-------------------------
 async function findEmail(userData, emailValue) {
   try {
     let emailFinder = userData.find((user) => user.emailId === emailValue);
@@ -43,12 +47,14 @@ async function findEmail(userData, emailValue) {
   }
 }
 
+//-------------------------update of user login-------------------
 async function updateSessionStorage(emailValue) {
   let LogginUserEmail = JSON.stringify(emailValue);
   sessionStorage.setItem("LogginUserId", LogginUserEmail);
   sessionStorage.setItem("MeShopToken", uniqueNum());
 }
 
+//----------------------Start shopping----------------------------
 async function goToShoppingPage(){
   setTimeout(() => {
     window.location.href="../src/shop.html";

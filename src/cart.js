@@ -209,7 +209,7 @@ function getAmount() {
 //   e.preventDefault();
 // }
 
-//------------------Load page on Entering to Cart page
+//------------------Load page on Entering to Cart page-------------------------------
 async function reload() {
   cartProduct = (await getCartDetails()) || [];
 

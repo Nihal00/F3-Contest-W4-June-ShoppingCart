@@ -226,7 +226,7 @@ async function displaySortedProduct(list) {
 async function filterList(typeOfProduct) {
   const itemsList = [];
   for (const data of productData) {
-    if (data.category == typeOfProduct) {
+    if (data.category === typeOfProduct) {
       itemsList.push(data);
     }
   }
@@ -570,6 +570,8 @@ async function reload() {
   }
 }
 
+
+//--------------------check if user is Login or not----------------------------
 if (
   sessionStorage.getItem("LogginUserId") &&
   sessionStorage.getItem("MeShopToken")

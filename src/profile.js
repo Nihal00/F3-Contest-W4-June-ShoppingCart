@@ -10,14 +10,19 @@ const changePassword = document.querySelector(".change-password");
 const logout = document.querySelector(".logout");
 
 
+//--------------------check if user is Login or not----------------------------
+
 if(sessionStorage.getItem('LogginUserId') === null && sessionStorage.getItem('MeShopToken') === null){
   window.location.href = "../index.html";
 } 
 
+
+//-----------------------Get user data----------------------------------
 async function LoggedInUserEmail() {
   let userEmail = JSON.parse(sessionStorage.getItem("LogginUserId"));
   return userEmail;
 }
+
 
 async function LoggedInUserDetails(userEmail) {
   let userDataBase = JSON.parse(localStorage.getItem("userData"));
@@ -27,6 +32,7 @@ async function LoggedInUserDetails(userEmail) {
   return userInfo;
 }
 
+//------------------------Update user Data-------------------------
 async function addUpdatedUserDetails(userData) {
   let userDataBase = JSON.parse(localStorage.getItem("userData"));
 
@@ -40,12 +46,14 @@ async function addUpdatedUserDetails(userData) {
   );
 }
 
+//-------------------Return to Shopping page---------------------
 async function goToShoppingPage() {
   setTimeout(() => {
     window.location.href = "./shop.html";
   }, 1000);
 }
 
+//---------------------Logout from your account-------------------
 async function logginOut(){
   sessionStorage.clear();
   setTimeout(() => {
@@ -54,6 +62,7 @@ async function logginOut(){
 }
 
 
+//----------------------------Change Name on click----------------
 saveInfo.addEventListener("click", async (e) => {
   e.preventDefault();
 
@@ -77,6 +86,7 @@ saveInfo.addEventListener("click", async (e) => {
 
 
 
+//-----------------------Change password onclick-------------------------------
 changePassword.addEventListener("click", async (e) => {
   e.preventDefault();
 
