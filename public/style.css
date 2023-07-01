@@ -568,7 +568,7 @@ li {
 }
 
 .checkout {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 400;
     padding: 2rem;
 }
@@ -623,9 +623,10 @@ li {
 #checkout {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
+    cursor: pointer;
 }
 
-.cart-empty {
+.cart-empty, .razorpay {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -644,7 +645,7 @@ li {
         rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.cart-empty h1 {
+.cart-empty h1, .razorpay h1 {
     font-size: 3rem;
     padding: 2rem;
 }
@@ -655,4 +656,36 @@ li {
 
 .hidden {
     display: none;
+    color: var(--white-color);
+}
+
+
+/* -------------Razorpay Gateway--------------- */
+.razorpay {
+    background-color: rgb(77, 170, 210);
+}
+
+.pay-btn{
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.payout-heading{
+    position: fixed;
+    top: 10rem;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 1rem;
+}
+
+.return-home{
+    position: fixed;
+    top: 33rem;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 1rem;
+    font-style: italic;
 }

@@ -522,7 +522,20 @@ filterBtn.addEventListener('click', async () => {
   }
 
   for(let data of productData){
+    priceFilter.sort((a, b) => a - b);
     for(let i = 0; i < priceFilter; i++){
+
+      // if(data.price < priceFilter[i] && data.price > 0){
+      //   userSortedProduct.push(data);
+      // } else if (data.price < priceFilter[i] && data.price >= 25){
+      //   userSortedProduct.push(data);
+      // } else if (data.price < priceFilter[i] && data.price >= 50) {
+      //   userSortedProduct.push(data);
+      // } else if (data.price < priceFilter[i] && data.price >= 100){
+      //   userSortedProduct.push(data);
+      // }
+
+
       if(priceFilter[i] === 25){
         if(data.price < priceFilter[i]) {
           userSortedProduct.push(data);
@@ -548,6 +561,7 @@ filterBtn.addEventListener('click', async () => {
       }
     }
   }
+  
 
   let set = new Set();
 

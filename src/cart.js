@@ -4,9 +4,11 @@ const bills = document.querySelector(".bills");
 const total = document.querySelector(".total");
 const billingSection = document.querySelector(".billing-section");
 const cartEmpty = document.querySelector('.cart-empty');
-const checkout = document.getElementById('checkout');
+// const checkout = document.getElementById('checkout');
 
+let cartProduct = [];
 
+//---------------- Get Cart Product from Session storeage-------------------------
 async function getCartDetails() {
   try {
     const cartData = JSON.parse(sessionStorage.getItem("cart"));
@@ -16,13 +18,14 @@ async function getCartDetails() {
   }
 }
 
+//-------------Update Cart Product on Session storage--------------------------
 async function updateCart(cart){
   sessionStorage.setItem('cart',JSON.stringify(cart));
 }
 
 
-
-async function displayPrice(cartProduct) {
+//--------------Display price to the Cart Billing section---------------------
+async function displayPrice() {
   bills.innerHTML = "";
 
   cartProduct.forEach((product) => {
@@ -37,7 +40,8 @@ async function displayPrice(cartProduct) {
 }
 
 
-async function displayTotal(cartProduct) {
+//----------Display Total price of the Cart Items to Billing section------------
+async function displayTotal() {
   let totalAmount = 0;
 
   for (let data of cartProduct) {
@@ -53,7 +57,10 @@ async function displayTotal(cartProduct) {
     `;
 }
 
-async function displayCart(cartProduct) {
+
+
+//---------------------Display Cart in UI-------------------------------
+async function displayCart() {
   cartInnerContainer.innerHTML = "";
 
   cartProduct.forEach((product) => {
@@ -102,102 +109,103 @@ async function displayCart(cartProduct) {
 
 
 
-//-----------------Razor Pay ------------------------------
-// checkout.addEventListener('click', () => {
-//   sessionStorage.removeItem("cart");
-//   reloder.reload();
-// })
 
-let key = "rzp_test_PV1oQ0oMtgXOsq"
+
 
 function getAmount(){
   let totalAmount = 0;
 
   let cartProduct = JSON.parse(sessionStorage.getItem("cart"));
 
-  for (let data of cartProduct) {
-    totalAmount += parseFloat(data.price);
+  if(cartProduct){
+    for (let data of cartProduct) {
+      totalAmount += parseFloat(data.price);
+    }
+    totalCost = totalAmount.toFixed(2) * 100;
+    console.log(totalCost * 100);
+    return totalCost.toFixed(2);
   }
-  totalCost = totalAmount.toFixed(2) * 100;
-  console.log(totalCost * 100);
-  return totalCost.toFixed(2);
 }
 
 
-var options = {
-  "key": key, // Enter the Key ID generated from the Dashboard
-  "amount": getAmount(),
-  "currency": "INR", // in USD only card payment is options
-  "description": "MeShop",
-  "image": "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg",
-  "prefill":
-  {
-    "email": "gaurav.kumar@example.com",
-    "contact": +919900000000,
-  },
-  config: {
-    display: {
-      blocks: {
-        utib: { //name for Axis block
-          name: "Pay using Axis Bank",
-          instruments: [
-            {
-              method: "card",
-              issuers: ["UTIB"]
-            },
-            {
-              method: "netbanking",
-              banks: ["UTIB"]
-            },
-          ]
-        },
-        other: { //  name for other block
-          name: "Other Payment modes",
-          instruments: [
-            {
-              method: "card",
-              issuers: ["ICIC"]
-            },
-            {
-              method: 'netbanking',
-            }
-          ]
-        }
-      },
-      hide: [
-        {
-        method: "upi"
-        }
-      ],
-      sequence: ["block.utib", "block.other"],
-      preferences: {
-        show_default_blocks: false // Should Checkout show its default blocks?
-      }
-    }
-  },
-  "handler": function (response) {
-    alert(response.razorpay_payment_id);
-    sessionStorage.removeItem('cart');
-    window.location.href="./shop.html";
-  },
-  "modal": {
-    "ondismiss": function () {
-      if (confirm("Are you sure, you want to close the form?")) {
-        txt = "You pressed OK!";
-        console.log("Checkout form closed by the user");
-      } else {
-        txt = "You pressed Cancel!";
-        console.log("Complete the Payment")
-      }
-    }
-  }
-};
+// let key = "rzp_test_PV1oQ0oMtgXOsq"
 
-var rzpay = new Razorpay(options);
-checkout.onclick = function(e) {
-  rzpay.open();
-  e.preventDefault();
-}
+// var options = {
+//   "key": key, // Enter the Key ID generated from the Dashboard
+//   "amount": getAmount(),
+//   "currency": "INR", // in USD only card payment is options
+//   "description": "MeShop",
+//   "image": "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg",
+//   "prefill":
+//   {
+//     "email": "gaurav.kumar@example.com",
+//     "contact": +919900000000,
+//   },
+//   config: {
+//     display: {
+//       blocks: {
+//         utib: { //name for Axis block
+//           name: "Pay using Axis Bank",
+//           instruments: [
+//             {
+//               method: "card",
+//               issuers: ["UTIB"]
+//             },
+//             {
+//               method: "netbanking",
+//               banks: ["UTIB"]
+//             },
+//           ]
+//         },
+//         other: { //  name for other block
+//           name: "Other Payment modes",
+//           instruments: [
+//             {
+//               method: "card",
+//               issuers: ["ICIC"]
+//             },
+//             {
+//               method: 'netbanking',
+//             }
+//           ]
+//         }
+//       },
+//       hide: [
+//         {
+//         method: "upi"
+//         }
+//       ],
+//       sequence: ["block.utib", "block.other"],
+//       preferences: {
+//         show_default_blocks: false // Should Checkout show its default blocks?
+//       }
+//     }
+//   },
+//   "handler": function (response) {
+//     alert(response.razorpay_payment_id);
+//     sessionStorage.removeItem('cart');
+//     window.location.href="./shop.html";
+//   },
+//   "modal": {
+//     "ondismiss": function () {
+//       if (confirm("Are you sure, you want to close the form?")) {
+//         txt = "You pressed OK!";
+//         console.log("Checkout form closed by the user");
+//       } else {
+//         txt = "You pressed Cancel!";
+//         console.log("Complete the Payment")
+//       }
+//     }
+//   }
+// };
+
+// var rzpay = new Razorpay(options);
+// checkout.onclick = function(e) {
+//   rzpay.open();
+//   e.preventDefault();
+// }
+
+
 
 
 
@@ -208,16 +216,19 @@ window.addEventListener("load", async () => {
   cartProduct = await getCartDetails() || [];
   console.log(cartProduct);
 
+
   if(cartProduct.length === 0){
     billingSection.classList.add('hidden');
-    cartEmpty.removeAttribute('hidden');
+    // cartEmpty.removeAttribute('hidden');
+
   } else {
     cartEmpty.classList.add('hidden');
     billingSection.removeAttribute('hidden');
   }
-  
-  await displayCart(cartProduct);
-  await displayPrice(cartProduct);
-  await displayTotal(cartProduct);
+ 
+  await displayCart();
+  await displayPrice();
+  await displayTotal();
 });
+
 
