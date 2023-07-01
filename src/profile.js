@@ -9,6 +9,11 @@ const cnfPassword = document.getElementById("cnf-password");
 const changePassword = document.querySelector(".change-password");
 const logout = document.querySelector(".logout");
 
+
+if(sessionStorage.getItem('LogginUserId') === null && sessionStorage.getItem('MeShopToken') === null){
+  window.location.href = "../index.html";
+} 
+
 async function LoggedInUserEmail() {
   let userEmail = JSON.parse(sessionStorage.getItem("LogginUserId"));
   return userEmail;
@@ -98,6 +103,6 @@ changePassword.addEventListener("click", async (e) => {
   await goToShoppingPage();
 });
 
-logout.addEventListener('click', async() => {
-  await logginOut();
-});
+
+
+logout.addEventListener('click', logginOut);

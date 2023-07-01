@@ -626,7 +626,7 @@ li {
     cursor: pointer;
 }
 
-.cart-empty, .razorpay {
+.cart-empty {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -661,31 +661,43 @@ li {
 
 
 /* -------------Razorpay Gateway--------------- */
-.razorpay {
-    background-color: rgb(77, 170, 210);
+
+.payment{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.razorpay{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    margin-block: 1rem;    
+    background-color: rgb(101, 177, 221);
+    border-radius: 3rem;
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    color: var(--white-color);
 }
 
 .pay-btn{
-    font-size: 2rem;
-    padding: 1rem 2rem;
-    border-radius: .5rem;
+    width: fit-content;
     border: none;
-    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem 2rem;
+    border-radius: 0.7rem;
 }
 
-.payout-heading{
-    position: fixed;
-    top: 10rem;
-    left: 50%;
-    transform: translate(-50%);
-    font-size: 1rem;
+.razorpay:hover > .pay-btn{
+    background-color: rgb(104, 230, 104);
+    color: var(--white-color);
+    font-weight: bold;
 }
 
-.return-home{
-    position: fixed;
-    top: 33rem;
-    left: 50%;
-    transform: translate(-50%);
-    font-size: 1rem;
-    font-style: italic;
-}

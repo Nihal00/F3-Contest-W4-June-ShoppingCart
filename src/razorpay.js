@@ -1,6 +1,13 @@
 let productAmt = itemsDetils();
 let UserEmail = userEmail();
 
+if (
+  sessionStorage.getItem("LogginUserId") === null &&
+  sessionStorage.getItem("MeShopToken") === null
+) {
+  window.location.href = "../index.html";
+}
+
 function itemsDetils() {
   let cartProduct = JSON.parse(sessionStorage.getItem("cart"));
 
@@ -18,8 +25,6 @@ function userEmail() {
   let userId = JSON.parse(sessionStorage.getItem("LogginUserId"));
   return userId;
 }
-
-
 
 let key = "rzp_test_PV1oQ0oMtgXOsq";
 
@@ -77,9 +82,12 @@ var options = {
   },
   handler: function (response) {
     // alert(response.razorpay_payment_id);
+    alert(
+      "The items were purchased. \nYour Payment ID " +
+        response.razorpay_payment_id
+    );
     sessionStorage.removeItem("cart");
     window.location.href = "./shop.html";
-    
   },
   modal: {
     ondismiss: function () {

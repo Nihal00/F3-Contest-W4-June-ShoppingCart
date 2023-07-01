@@ -16,20 +16,19 @@ const blackValue = document.getElementById("black");
 const whiteValue = document.getElementById("white");
 
 //-----------Size Filter------------
-const sValue = document.getElementById('s');
-const mValue = document.getElementById('m');
-const lValue = document.getElementById('l');
-const xlValue = document.getElementById('xl');
+const sValue = document.getElementById("s");
+const mValue = document.getElementById("m");
+const lValue = document.getElementById("l");
+const xlValue = document.getElementById("xl");
 
 //-----------Price Filter------------
-const rangeOne = document.getElementById('0To25');
-const rangeTwo = document.getElementById('25To50');
-const rangeThree = document.getElementById('50To100');
-const rangeFour = document.getElementById('100on');
+const rangeOne = document.getElementById("0To25");
+const rangeTwo = document.getElementById("25To50");
+const rangeThree = document.getElementById("50To100");
+const rangeFour = document.getElementById("100on");
 
 let productData = [];
 let cartProductData = [];
-
 
 // ---------------------Get Data from API----------------------
 async function getProductDetails() {
@@ -322,7 +321,6 @@ async function getSessionProduct() {
 //   }
 // }
 
-
 // function filterColorVise(){
 //   let set = new Set();
 //   colorSortedProduct.forEach((color) => {
@@ -333,19 +331,11 @@ async function getSessionProduct() {
 //   return unquieColor;
 // }
 
-
-
-
-
-
-
-
 //-----------------------Display in UI as per search result-------------------------
 searchBar.addEventListener("input", async (e) => {
   let searchResult = searchInput(e.target.value);
   await displaySortedProduct(searchResult);
 });
-
 
 //----------------------Display in UI as per catogory result-----------------------
 itemSelectorList.forEach((selector) => {
@@ -362,27 +352,22 @@ itemSelectorList.forEach((selector) => {
   });
 });
 
-
-
-
 //----------------------------Sort as per rating in UI----------------------------
 ratingBar.addEventListener("change", async (e) => {
   let rate = ratingInput(e.target.value);
   await displaySortedProduct(rate);
 });
 
-
-
 //----------------------------Filter by Color range in UI----------------------------
 let colorFilter = [];
 let isColorFlag = new Array(5).fill(true);
 
-function colorFinder(value, index){
-  if(isColorFlag[index]){
+function colorFinder(value, index) {
+  if (isColorFlag[index]) {
     colorFilter.push(value);
     isColorFlag[index] = false;
-  }else {
-    let tempFilter = colorFilter.filter(ele => ele !== value);
+  } else {
+    let tempFilter = colorFilter.filter((ele) => ele !== value);
     colorFilter = tempFilter;
     isColorFlag[index] = true;
   }
@@ -390,141 +375,137 @@ function colorFinder(value, index){
 }
 
 redValue.addEventListener("change", (e) => {
-    let value = e.target.value;
-    colorFinder(value, 0);
+  let value = e.target.value;
+  colorFinder(value, 0);
 });
 
 blueValue.addEventListener("change", (e) => {
-    let value = e.target.value;
-    colorFinder(value, 1);
+  let value = e.target.value;
+  colorFinder(value, 1);
 });
 
 greenValue.addEventListener("change", (e) => {
-    let value = e.target.value;
-    colorFinder(value, 2);
+  let value = e.target.value;
+  colorFinder(value, 2);
 });
 
 blackValue.addEventListener("change", (e) => {
-    let value = e.target.value;
-    colorFinder(value, 3);
+  let value = e.target.value;
+  colorFinder(value, 3);
 });
 
 whiteValue.addEventListener("change", (e) => {
-    let value = e.target.value;
-    colorFinder(value, 4);
+  let value = e.target.value;
+  colorFinder(value, 4);
 });
 
 //---------------------------Filter by Size range in UI----------------------------------
 
-
 let sizeFilter = [];
 let isSizeFlag = new Array(4).fill(true);
 
-function sizeFinder(value, index){
-  if(isSizeFlag[index]){
+function sizeFinder(value, index) {
+  if (isSizeFlag[index]) {
     sizeFilter.push(value);
     isSizeFlag[index] = false;
-  }else {
-    let tempFilter = sizeFilter.filter(ele => ele != value);
+  } else {
+    let tempFilter = sizeFilter.filter((ele) => ele != value);
     sizeFilter = tempFilter;
     isSizeFlag[index] = true;
   }
-  console.log(sizeFilter); 
+  console.log(sizeFilter);
 }
 
 sValue.addEventListener("change", (e) => {
-    let value = e.target.value;
-    sizeFinder(value, 0);
+  let value = e.target.value;
+  sizeFinder(value, 0);
 });
 
 mValue.addEventListener("change", (e) => {
-    let value = e.target.value;
-    sizeFinder(value, 1);
+  let value = e.target.value;
+  sizeFinder(value, 1);
 });
 
 lValue.addEventListener("change", (e) => {
-    let value = e.target.value;
-    sizeFinder(value, 2);
+  let value = e.target.value;
+  sizeFinder(value, 2);
 });
 
 xlValue.addEventListener("change", (e) => {
-    let value = e.target.value;
-    sizeFinder(value, 3);
+  let value = e.target.value;
+  sizeFinder(value, 3);
 });
 
-
 //---------------------------Filter by Price range in UI----------------------------------
-
 
 let priceFilter = [];
 let isPriceFlag = new Array(4).fill(true);
 
-function priceFinder(value, index){
-  if(isPriceFlag[index]){
+function priceFinder(value, index) {
+  if (isPriceFlag[index]) {
     priceFilter.push(parseInt(value));
     isPriceFlag[index] = false;
-  }else {
-    let tempFilter = priceFilter.filter(ele => ele != parseInt(value));
+  } else {
+    let tempFilter = priceFilter.filter((ele) => ele != parseInt(value));
     priceFilter = tempFilter;
     isPriceFlag[index] = true;
   }
-  console.log(priceFilter); 
+  console.log(priceFilter);
 }
 
 rangeOne.addEventListener("change", (e) => {
-    let value = e.target.value;
-    priceFinder(value, 0);
+  let value = e.target.value;
+  priceFinder(value, 0);
 });
 
 rangeTwo.addEventListener("change", (e) => {
-    let value = e.target.value;
-    priceFinder(value, 1);
+  let value = e.target.value;
+  priceFinder(value, 1);
 });
 
 rangeThree.addEventListener("change", (e) => {
-    let value = e.target.value;
-    priceFinder(value, 2);
+  let value = e.target.value;
+  priceFinder(value, 2);
 });
 
 rangeFour.addEventListener("change", (e) => {
-    let value = e.target.value;
-    priceFinder(value, 3);
+  let value = e.target.value;
+  priceFinder(value, 3);
 });
 
-
-
 //-------------------Display Base on User Choice -------------------------
-const filterBtn = document.getElementById('filter');
+const filterBtn = document.getElementById("filter");
 
-filterBtn.addEventListener('click', async () => {
-
-  if(colorFilter.length === 0 && sizeFilter.length === 0 && priceFilter.length === 0){
+filterBtn.addEventListener("click", async () => {
+  if (
+    colorFilter.length === 0 &&
+    sizeFilter.length === 0 &&
+    priceFilter.length === 0
+  ) {
     await displayProducts();
     return;
   }
 
-
   let userSortedProduct = [];
-  for(let data of productData){
-    for(let i = 0; i < colorFilter.length; i++){
-      if(data.colors.includes(colorFilter[i])){
+  for (let data of productData) {
+    for (let i = 0; i < colorFilter.length; i++) {
+      if (data.colors.includes(colorFilter[i])) {
         userSortedProduct.push(data);
       }
     }
   }
 
-  for(let data of productData){
-    for(let i = 0; i < sizeFilter.length; i++){
-      if(data.sizes.includes(sizeFilter[i]) && data.sizes !== "Standed"){
+  for (let data of productData) {
+    for (let i = 0; i < sizeFilter.length; i++) {
+      if (data.sizes.includes(sizeFilter[i]) && data.sizes !== "Standed") {
         userSortedProduct.push(data);
       }
     }
   }
 
-  for(let data of productData){
+  for (let data of productData) {
     priceFilter.sort((a, b) => a - b);
-    for(let i = 0; i < priceFilter; i++){
-
+    for (let i = 0; i < priceFilter; i++) {
       // if(data.price < priceFilter[i] && data.price > 0){
       //   userSortedProduct.push(data);
       // } else if (data.price < priceFilter[i] && data.price >= 25){
@@ -535,37 +516,35 @@ filterBtn.addEventListener('click', async () => {
       //   userSortedProduct.push(data);
       // }
 
-
-      if(priceFilter[i] === 25){
-        if(data.price < priceFilter[i]) {
+      if (priceFilter[i] === 25) {
+        if (data.price < priceFilter[i]) {
           userSortedProduct.push(data);
         }
       }
 
-      if(priceFilter[i] === 50){
-        if(data.price >= 25 && data.price < priceFilter[i]){
+      if (priceFilter[i] === 50) {
+        if (data.price >= 25 && data.price < priceFilter[i]) {
           userSortedProduct.push(data);
         }
       }
 
-      if(priceFilter[i] === 100){
-        if(data.price >= 50 && data.price < priceFilter[i]){
+      if (priceFilter[i] === 100) {
+        if (data.price >= 50 && data.price < priceFilter[i]) {
           userSortedProduct.push(data);
         }
       }
 
-      if(priceFilter[i] === 101){
-        if(data.price >= priceFilter[i]){
+      if (priceFilter[i] === 101) {
+        if (data.price >= priceFilter[i]) {
           userSortedProduct.push(data);
         }
       }
     }
   }
-  
 
   let set = new Set();
 
-  for(let i = 0; i < userSortedProduct.length; i++){
+  for (let i = 0; i < userSortedProduct.length; i++) {
     set.add(userSortedProduct[i]);
   }
 
@@ -574,15 +553,10 @@ filterBtn.addEventListener('click', async () => {
   userSortedProduct = unquie;
   console.log(userSortedProduct);
   await displaySortedProduct(userSortedProduct);
-  
-})
-
-
-
-
+});
 
 //------------------------Display UI on Window loading---------------
-async function reload(){
+async function reload() {
   if (sessionStorage.getItem("productData")) {
     productData = await getSessionProduct();
     await displayProducts();
@@ -595,4 +569,11 @@ async function reload(){
   }
 }
 
-window.addEventListener("load", reload);
+if (
+  sessionStorage.getItem("LogginUserId") &&
+  sessionStorage.getItem("MeShopToken")
+) {
+  window.addEventListener("load", reload);
+} else {
+  window.location.href = "../index.html";
+}
