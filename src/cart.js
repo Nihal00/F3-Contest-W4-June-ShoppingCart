@@ -36,17 +36,20 @@ async function displayPrice(cartProduct) {
   });
 }
 
+
 async function displayTotal(cartProduct) {
   let totalAmount = 0;
 
   for (let data of cartProduct) {
     totalAmount += parseFloat(data.price);
   }
+  totalCost = totalAmount.toFixed(2) * 100;
+  console.log(totalCost * 100);
 
   total.innerHTML = "";
-
+  
   total.innerHTML = `
-        <span class="bold">Total</span><span>$${totalAmount.toFixed(2)}</span>
+        <span class="bold">Total</span><span>Rs ${totalAmount.toFixed(2)}</span>
     `;
 }
 
@@ -100,13 +103,32 @@ async function displayCart(cartProduct) {
 
 
 //-----------------Razor Pay ------------------------------
+// checkout.addEventListener('click', () => {
+//   sessionStorage.removeItem("cart");
+//   reloder.reload();
+// })
 
-const razorPay = document.getElementById('checkout');
+let key = "rzp_test_PV1oQ0oMtgXOsq"
+
+function getAmount(){
+  let totalAmount = 0;
+
+  let cartProduct = JSON.parse(sessionStorage.getItem("cart"));
+
+  for (let data of cartProduct) {
+    totalAmount += parseFloat(data.price);
+  }
+  totalCost = totalAmount.toFixed(2) * 100;
+  console.log(totalCost * 100);
+  return totalCost.toFixed(2);
+}
+
+
 var options = {
-  "key": "", // Enter the Key ID generated from the Dashboard
-  "amount": "1000",
-  "currency": "INR",
-  "description": "Acme Corp",
+  "key": key, // Enter the Key ID generated from the Dashboard
+  "amount": getAmount(),
+  "currency": "INR", // in USD only card payment is options
+  "description": "MeShop",
   "image": "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg",
   "prefill":
   {
@@ -155,6 +177,8 @@ var options = {
   },
   "handler": function (response) {
     alert(response.razorpay_payment_id);
+    sessionStorage.removeItem('cart');
+    window.location.href="./shop.html";
   },
   "modal": {
     "ondismiss": function () {
@@ -169,19 +193,17 @@ var options = {
   }
 };
 
-var rzp1 = new Razorpay(options);
-
-razorPay.addEventListener('click', (e) => {
-  rzp1.open();
-    e.preventDefault();
-
-  sessionStorage.removeItem('cart');
-  reloder.reload();
-  
-
-})
+var rzpay = new Razorpay(options);
+checkout.onclick = function(e) {
+  rzpay.open();
+  e.preventDefault();
+}
 
 
+
+
+
+//------------------Load page on Entering to Cart page
 window.addEventListener("load", async () => {
   cartProduct = await getCartDetails() || [];
   console.log(cartProduct);
@@ -193,7 +215,9 @@ window.addEventListener("load", async () => {
     cartEmpty.classList.add('hidden');
     billingSection.removeAttribute('hidden');
   }
+  
   await displayCart(cartProduct);
   await displayPrice(cartProduct);
   await displayTotal(cartProduct);
 });
+
