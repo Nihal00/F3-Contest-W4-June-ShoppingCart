@@ -93,6 +93,10 @@ li {
     cursor: pointer;
 }
 
+.navbar > li:hover{
+    color: var(--white-color);
+}
+
 /* -----------Login UI of the website---------- */
 .first-page {
     padding: 7rem 4rem;
@@ -267,7 +271,7 @@ li {
     top: 5rem;
     width: 15rem;
     height: 100vh;
-    /* overflow-y: hidden; */
+    overflow-y: scroll;
     padding-bottom: 1rem;
     background-color: var(--black-color);
     border-top: 1px solid var(--lite-black);

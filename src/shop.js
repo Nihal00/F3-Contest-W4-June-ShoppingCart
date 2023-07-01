@@ -27,6 +27,7 @@ const rangeTwo = document.getElementById("25To50");
 const rangeThree = document.getElementById("50To100");
 const rangeFour = document.getElementById("100on");
 
+
 let productData = [];
 let cartProductData = [];
 
@@ -225,7 +226,7 @@ async function displaySortedProduct(list) {
 async function filterList(typeOfProduct) {
   const itemsList = [];
   for (const data of productData) {
-    if (data.category.includes(typeOfProduct)) {
+    if (data.category == typeOfProduct) {
       itemsList.push(data);
     }
   }
@@ -473,7 +474,7 @@ rangeFour.addEventListener("change", (e) => {
   priceFinder(value, 3);
 });
 
-//-------------------Display Base on User Choice -------------------------
+//-------------------Display Based on User Choice -------------------------
 const filterBtn = document.getElementById("filter");
 
 filterBtn.addEventListener("click", async () => {
